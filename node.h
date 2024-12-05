@@ -1,3 +1,6 @@
+// Santiago Gaete
+// 12/5/24
+
 #ifndef NODE_H
 #define NODE_H
 #include <iostream>

@@ -2,8 +2,8 @@
 #define STUDENT_H
 
 class Student {
-  private:
-    int id;
+  public:
+  char* name;
 };
 
 #endif

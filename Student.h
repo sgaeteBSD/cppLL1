@@ -3,7 +3,7 @@
 
 class Student {
   public:
-  char* name;
+  char name;
 };
 
 #endif
