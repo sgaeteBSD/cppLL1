@@ -1,14 +1,15 @@
 // Santiago Gaete
-// 12/5/24
+// 12/17/24
 // Testing for Linked List Pt. 1
 
 #include "Student.h"
-#include "Node.h"
+#include "node.h"
 
 using namespace std;
 
 void add(char newName, Node* &head); //pass by reference on head
 void print(Node* next, Node* head);
+Node* removeLastNode(Node* head);
 
 int main() {
   Node* head = nullptr;
@@ -18,6 +19,11 @@ int main() {
   print(head, head);
   add('R', head);
   print(head, head);
+  removeLastNode(head);
+  print(head, head);
+  removeLastNode(head);
+  print(head, head);
+  //last print should be list:G
 }
 
 void add(char newName, Node* &head) {
@@ -46,4 +52,30 @@ void print(Node* next, Node* head) {
     cout << next->getStudent()->name << " ";
     print(next->getNext(), head);
   }
+}
+
+Node* removeLastNode(Node* head) {
+    //if list is empty return nullptr
+    if (head == nullptr) {
+        return nullptr;
+    }
+    //if list has only one node... delete it and return nullptr
+    if (head->getNext() == nullptr) {
+        delete head;
+        return nullptr;
+    }
+
+    //find second last node
+    Node* secondLast = head;
+    while (secondLast->getNext()->getNext() != nullptr) {
+      secondLast = secondLast->getNext();
+    }
+
+    //delete the last node
+    delete (secondLast->getNext());
+
+    //change next of second last
+    secondLast->setNext(nullptr);
+
+    return head;
 }
